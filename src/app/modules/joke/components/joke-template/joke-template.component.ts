@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Joke } from '../../services';
 
 @Component({
   selector: 'app-joke-template',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./joke-template.component.scss']
 })
 export class JokeTemplateComponent {
-
+  @Input() joke: Joke;
 }
