@@ -1,1 +1,1 @@
-<p *ngFor="let category of categories" (click)="categoryClicked.emit(category)">{{ category }}</p>
+<p *ngFor="let category of categories" (click)="categoryClicked.emit(category)">{{ category | uppercase }}</p>
