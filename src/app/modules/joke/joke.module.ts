@@ -4,6 +4,8 @@ import { JokeComponent } from './joke.component';
 import { JokeTemplateComponent } from './components';
 import { JokeRoutingModule } from './joke-routing.module';
 import { JokeService } from './services';
+import { NgxsModule } from '@ngxs/store';
+import { JokeStore } from './store/joke.store';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,7 @@ import { JokeService } from './services';
   imports: [
     CommonModule,
     JokeRoutingModule,
+    NgxsModule.forFeature([JokeStore]),
   ],
   providers: [
     JokeService,
