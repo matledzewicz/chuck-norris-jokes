@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { JokeComponent } from './joke.component';
 import { JokeTemplateComponent } from './components';
 import { JokeRoutingModule } from './joke-routing.module';
+import { JokeService } from './services';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,8 @@ import { JokeRoutingModule } from './joke-routing.module';
     CommonModule,
     JokeRoutingModule,
   ],
-  providers: [],
+  providers: [
+    JokeService,
+  ],
 })
 export class JokeModule { }
