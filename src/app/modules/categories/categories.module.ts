@@ -3,6 +3,7 @@ import { CategoriesComponent } from './categories.component';
 import { CategoriesListComponent } from './components';
 import { CommonModule } from '@angular/common';
 import { CategoriesRoutingModule } from './categories-routing.module';
+import { CategoriesService } from './services';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,8 @@ import { CategoriesRoutingModule } from './categories-routing.module';
     CommonModule,
     CategoriesRoutingModule,
   ],
-  providers: [],
+  providers: [
+    CategoriesService,
+  ],
 })
 export class CategoriesModule { }
