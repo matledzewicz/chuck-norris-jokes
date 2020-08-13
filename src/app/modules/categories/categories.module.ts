@@ -4,6 +4,8 @@ import { CategoriesListComponent } from './components';
 import { CommonModule } from '@angular/common';
 import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoriesService } from './services';
+import { NgxsModule } from '@ngxs/store';
+import { CategoriesStore } from './store/categories.store';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,7 @@ import { CategoriesService } from './services';
   imports: [
     CommonModule,
     CategoriesRoutingModule,
+    NgxsModule.forFeature([CategoriesStore]),
   ],
   providers: [
     CategoriesService,
