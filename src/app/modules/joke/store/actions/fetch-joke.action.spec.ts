@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 import { JokeService, Joke } from '../../services';
 import { JokeStore } from '../joke.store';
 import { FetchJokeAction } from './fetch-joke.action';
+import { createJokeStoreTestProviders } from '../joke.store.spec.providers';
 
 describe('Store handles FetchJokeAction', () => {
   let store: Store;
@@ -11,6 +12,18 @@ describe('Store handles FetchJokeAction', () => {
   let joke: Joke;
 
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      imports: [
+        NgxsModule.forRoot([JokeStore]),
+      ],
+      providers: [
+        ...createJokeStoreTestProviders(),
+      ],
+    });
+
+    store = TestBed.inject(Store);
+    jokeService = TestBed.inject(JokeService) as jasmine.SpyObj<JokeService>;
+
     joke = {
       created_at: 'some time ago',
       icon_url: 'some icon',
@@ -20,20 +33,7 @@ describe('Store handles FetchJokeAction', () => {
       value: 'Some really funny joke',
     };
 
-    jokeService = jasmine.createSpyObj('JokeService', ['fetchJoke']);
     jokeService.fetchJoke.and.returnValue(of(joke));
-
-    TestBed.configureTestingModule({
-      imports: [
-        NgxsModule.forRoot([JokeStore]),
-      ],
-      providers: [
-        { provide: JokeService, useValue: jokeService },
-      ],
-    });
-
-    store = TestBed.inject(Store);
-    jokeService = TestBed.inject(JokeService) as jasmine.SpyObj<JokeService>;
   });
 
   it('should call jokeService fetchJoke method with correct parameters', async () => {
