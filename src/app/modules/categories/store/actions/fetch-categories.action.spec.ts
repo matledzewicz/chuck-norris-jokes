@@ -4,6 +4,7 @@ import { CategoriesService } from '../../services';
 import { CategoriesStore } from '../categories.store';
 import { FetchCategoriesAction } from './fetch-categories.action';
 import { of } from 'rxjs';
+import { createCategoriesStoreTestProviders } from '../categories.store.spec.providers';
 
 describe('Store handles FetchCategoriesAction', () => {
   let store: Store;
@@ -11,21 +12,21 @@ describe('Store handles FetchCategoriesAction', () => {
   let categories: string[];
 
   beforeEach(() => {
-    categories = ['foo', 'bar'];
-    categoriesService = jasmine.createSpyObj('CategoriesService', ['fetchCategories']);
-    categoriesService.fetchCategories.and.returnValue(of(categories));
-
     TestBed.configureTestingModule({
       imports: [
         NgxsModule.forRoot([CategoriesStore]),
       ],
       providers: [
-        { provide: CategoriesService, useValue: categoriesService },
+        ...createCategoriesStoreTestProviders()
       ],
     });
 
     store = TestBed.inject(Store);
     categoriesService = TestBed.inject(CategoriesService) as jasmine.SpyObj<CategoriesService>;
+
+    categories = ['foo', 'bar'];
+    categoriesService.fetchCategories.and.returnValue(of(categories));
+
   });
 
   it('should call categoriesService fetchCategories method with correct parameters', async () => {
