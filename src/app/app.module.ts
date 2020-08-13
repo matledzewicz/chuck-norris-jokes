@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NgxsModule } from '@ngxs/store';
     BrowserAnimationsModule,
     HttpClientModule,
     NgxsModule.forRoot([]),
+    NgxsRouterPluginModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

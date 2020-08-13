@@ -1,2 +1,2 @@
-<h1>Smart Categories</h1>
-<app-categories-list></app-categories-list>
+<h1>List of Categories</h1>
+<app-categories-list [categories]="categories$ | async" (categoryClicked)="categoryClicked($event)"></app-categories-list>

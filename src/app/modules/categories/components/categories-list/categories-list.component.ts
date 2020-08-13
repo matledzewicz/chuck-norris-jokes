@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-categories-list',
@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./categories-list.component.scss']
 })
 export class CategoriesListComponent {
-
+  @Input() categories: string[];
+  @Output() categoryClicked: EventEmitter<string> = new EventEmitter();
 }

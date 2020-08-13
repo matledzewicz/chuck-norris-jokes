@@ -1,1 +1,1 @@
-<h1>Dummy Categories list</h1>
+<p *ngFor="let category of categories" (click)="categoryClicked.emit(category)">{{ category }}</p>
