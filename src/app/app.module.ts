@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { SpinnerModule } from './modules/spinner/spinner.module';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    SpinnerModule,
     NgxsModule.forRoot([]),
     NgxsRouterPluginModule.forRoot(),
   ],
