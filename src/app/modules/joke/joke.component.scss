@@ -1,8 +1,21 @@
-mat-icon {
-  font-size: 2rem;
-  cursor: pointer;
-}
-
 .joke-container {
+  padding: 10px;
+  background-color: #dddddd;
   min-height: 100vh;
+
+  .joke-back {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+  }
+  .joke {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+  }
+
+  mat-icon {
+    font-size: 2rem;
+    cursor: pointer;
+  }
 }
