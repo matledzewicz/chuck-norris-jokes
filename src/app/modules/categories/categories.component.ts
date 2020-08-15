@@ -3,6 +3,7 @@ import { Select, Store } from '@ngxs/store';
 import { CategoriesSelector } from './store/selectors/categories.selector';
 import { Observable } from 'rxjs';
 import { Navigate } from '@ngxs/router-plugin';
+import { chuckGifBase64 } from './chuck-gif';
 
 @Component({
   selector: 'app-categories',
@@ -11,6 +12,7 @@ import { Navigate } from '@ngxs/router-plugin';
 })
 export class CategoriesComponent {
   @Select(CategoriesSelector.SelectList) categories$: Observable<string[]>;
+  chuckGifBase64 = chuckGifBase64;
 
   constructor(private store: Store) {}
 

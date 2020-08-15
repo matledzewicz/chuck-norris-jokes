@@ -6,6 +6,8 @@ import { CategoriesRoutingModule } from './categories-routing.module';
 import { CategoriesService } from './services';
 import { NgxsModule } from '@ngxs/store';
 import { CategoriesStore } from './store/categories.store';
+import { MatButtonModule } from '@angular/material/button';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { CategoriesStore } from './store/categories.store';
   imports: [
     CommonModule,
     CategoriesRoutingModule,
+    MatButtonModule,
+    MatToolbarModule,
     NgxsModule.forFeature([CategoriesStore]),
   ],
   providers: [

@@ -1,1 +1,5 @@
-<p *ngFor="let category of categories" (click)="categoryClicked.emit(category)">{{ category | uppercase }}</p>
+<div class="row no-gutters">
+  <div class="category-tab col-12 col-md-6" *ngFor="let category of categories" (click)="categoryClicked.emit(category)">
+    <button class="without-outline w-100" mat-stroked-button color="primary">{{ category | uppercase }}</button>
+  </div>
+</div>

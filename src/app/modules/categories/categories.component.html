@@ -1,2 +1,7 @@
-<h1>List of Categories</h1>
+<mat-toolbar color="primary" class="d-flex justify-content-center">
+  <img [src]="chuckGifBase64">
+  <span>{{ 'Choose joke category' | uppercase }}</span>
+  <img [src]="chuckGifBase64">
+</mat-toolbar>
+
 <app-categories-list [categories]="categories$ | async" (categoryClicked)="categoryClicked($event)"></app-categories-list>
