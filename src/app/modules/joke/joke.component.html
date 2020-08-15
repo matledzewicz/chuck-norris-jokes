@@ -1,5 +1,14 @@
-<span [routerLink]="['/']">Back</span>
-<h1>Smart Jokes</h1>
-<app-joke-template [joke]="currentJoke$ | async"></app-joke-template>
+<div>
+  <span [routerLink]="['/']">
+    <mat-icon color="primary" fontSet="fas" fontIcon="fa-arrow-circle-left" class="opacity-hover"></mat-icon>
+  </span>
+</div>
+<div class="joke-container d-flex align-items-center w-100">
+  <div class="w-100">
+    <app-joke-template [joke]="currentJoke$ | async"></app-joke-template>
+    <div class="d-flex justify-content-center">
+      <button mat-raised-button color="primary" class="opacity-hover" (click)="displayAnother()">Another one</button>
+    </div>
+  </div>
+</div>
 
-<button (click)="displayAnother()">Another one</button>

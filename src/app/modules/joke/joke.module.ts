@@ -6,6 +6,8 @@ import { JokeRoutingModule } from './joke-routing.module';
 import { JokeService } from './services';
 import { NgxsModule } from '@ngxs/store';
 import { JokeStore } from './store/joke.store';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -15,6 +17,8 @@ import { JokeStore } from './store/joke.store';
   imports: [
     CommonModule,
     JokeRoutingModule,
+    MatIconModule,
+    MatButtonModule,
     NgxsModule.forFeature([JokeStore]),
   ],
   providers: [
