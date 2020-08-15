@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorComponent } from './error.component';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { ErrorRoutingModule } from './error-routing.module';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
     RouterModule,
     MatButtonModule,
     CommonModule,
+    ErrorRoutingModule,
   ],
   exports: [
     ErrorComponent,

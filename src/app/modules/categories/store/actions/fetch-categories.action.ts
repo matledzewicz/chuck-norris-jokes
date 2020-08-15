@@ -2,7 +2,7 @@ import { CategoriesService } from '../../services';
 import { CategoriesState } from '../categories.state';
 import { StateContext } from '@ngxs/store';
 import { tap, catchError } from 'rxjs/operators';
-import { Router } from '@angular/router';
+import { Navigate } from '@ngxs/router-plugin';
 
 export class FetchCategoriesAction {
   static readonly type = `[CATEGORIES] FETCH`;
@@ -10,7 +10,7 @@ export class FetchCategoriesAction {
 }
 
 export const fetchCategoriesReducerCreator =
-  (categoriesService: CategoriesService, router: Router) =>
+  (categoriesService: CategoriesService) =>
     (ctx: StateContext<CategoriesState>, action: FetchCategoriesAction) => {
       return categoriesService.fetchCategories()
       .pipe(
@@ -18,6 +18,6 @@ export const fetchCategoriesReducerCreator =
           ...ctx.getState(),
           list: categories,
         })),
-        catchError(() => router.navigate(['/error'])),
+        catchError(() => ctx.dispatch(new Navigate(['/error']))),
       );
     };

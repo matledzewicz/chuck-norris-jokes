@@ -2,7 +2,7 @@ import { StateContext } from '@ngxs/store';
 import { tap, catchError } from 'rxjs/operators';
 import { JokeService, Joke } from '../../services';
 import { JokeState } from '../joke.state';
-import { Router } from '@angular/router';
+import { Navigate } from '@ngxs/router-plugin';
 
 export class FetchJokeAction {
   static readonly type = `[JOKE] FETCH`;
@@ -10,7 +10,7 @@ export class FetchJokeAction {
 }
 
 export const fetchJokeReducerCreator =
-  (jokeService: JokeService, router: Router) =>
+  (jokeService: JokeService) =>
     (ctx: StateContext<JokeState>, action: FetchJokeAction) => {
       return jokeService.fetchJoke(action.category)
       .pipe(
@@ -19,6 +19,6 @@ export const fetchJokeReducerCreator =
           current: joke,
           category: action.category,
         })),
-        catchError(() => router.navigate(['/error'])),
+        catchError(() => ctx.dispatch(new Navigate(['/error']))),
       );
     };

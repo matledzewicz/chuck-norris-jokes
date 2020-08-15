@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ErrorComponent } from './modules/error/error.component';
 
 
 const routes: Routes = [
@@ -14,7 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'error',
-    component: ErrorComponent,
+    loadChildren: () => import('src/app/modules/error/error.module').then(m => m.ErrorModule),
   }
 ];
 
