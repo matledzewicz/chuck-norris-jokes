@@ -1,14 +1,17 @@
 import { TestBed } from '@angular/core/testing';
 import { Store, NgxsModule } from '@ngxs/store';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { JokeService, Joke } from '../../services';
 import { JokeStore } from '../joke.store';
 import { FetchJokeAction } from './fetch-joke.action';
 import { createJokeStoreTestProviders } from '../joke.store.spec.providers';
+import { Router } from '@angular/router';
 
 describe('Store handles FetchJokeAction', () => {
   let store: Store;
   let jokeService: jasmine.SpyObj<JokeService>;
+  let router: jasmine.SpyObj<Router>;
+
   let joke: Joke;
 
   beforeEach(() => {
@@ -23,6 +26,8 @@ describe('Store handles FetchJokeAction', () => {
 
     store = TestBed.inject(Store);
     jokeService = TestBed.inject(JokeService) as jasmine.SpyObj<JokeService>;
+    router = TestBed.inject(Router) as jasmine.SpyObj<Router>;
+
 
     joke = {
       created_at: 'some time ago',
@@ -54,7 +59,10 @@ describe('Store handles FetchJokeAction', () => {
     expect(store.selectSnapshot((state) => state.joke.category)).toEqual('bar-category');
   });
 
-  it('in case of error should ...', (done) => {
-   done.fail('Implement error case');
+  it('in case of error should navigate to error page', async () => {
+    jokeService.fetchJoke.and.returnValue(throwError(new Error('Ups!')));
+    await store.dispatch(new FetchJokeAction('bar-category'));
+
+    expect(router.navigate).toHaveBeenCalledWith(['/error']);
   });
 });

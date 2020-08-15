@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { SpinnerModule } from './modules/spinner/spinner.module';
+import { ErrorModule } from './modules/error/error.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { SpinnerModule } from './modules/spinner/spinner.module';
     BrowserAnimationsModule,
     HttpClientModule,
     SpinnerModule,
+    ErrorModule,
     NgxsModule.forRoot([]),
     NgxsRouterPluginModule.forRoot(),
   ],

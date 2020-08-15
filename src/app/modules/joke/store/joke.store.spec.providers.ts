@@ -1,6 +1,7 @@
 import { Provider } from '@angular/core';
-import { of } from 'rxjs';
+import { of, identity } from 'rxjs';
 import { Joke, JokeService } from '../services';
+import { Router } from '@angular/router';
 
 export const createJokeStoreTestProviders = (): Provider[] => {
   // Spy declaration with default success responses
@@ -16,7 +17,11 @@ export const createJokeStoreTestProviders = (): Provider[] => {
   const jokeService = jasmine.createSpyObj('JokeService', ['fetchJoke']);
   jokeService.fetchJoke.and.returnValue(of(joke));
 
+  const router = jasmine.createSpyObj('Router', ['navigate']);
+  router.navigate.and.returnValue(new Promise(identity));
+
   return [
     { provide: JokeService, useValue: jokeService },
+    { provide: Router, useValue: router },
   ];
 };

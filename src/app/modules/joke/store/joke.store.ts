@@ -4,6 +4,7 @@ import { attachAction } from '@ngxs-labs/attach-action';
 import { JokeState } from './joke.state';
 import { JokeService } from '../services';
 import { FetchJokeAction, fetchJokeReducerCreator } from './actions/fetch-joke.action';
+import { Router } from '@angular/router';
 
 @State<JokeState>({
   name: 'joke',
@@ -14,7 +15,7 @@ import { FetchJokeAction, fetchJokeReducerCreator } from './actions/fetch-joke.a
 })
 @Injectable()
 export class JokeStore {
-  constructor(jokeService: JokeService) {
-    attachAction(JokeStore, FetchJokeAction, fetchJokeReducerCreator(jokeService));
+  constructor(jokeService: JokeService, router: Router) {
+    attachAction(JokeStore, FetchJokeAction, fetchJokeReducerCreator(jokeService, router));
   }
 }

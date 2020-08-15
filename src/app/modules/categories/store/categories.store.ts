@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { CategoriesService } from '../services';
 import { FetchCategoriesAction, fetchCategoriesReducerCreator } from './actions/fetch-categories.action';
 import { attachAction } from '@ngxs-labs/attach-action';
+import { Router } from '@angular/router';
 
 @State<CategoriesState>({
   name: 'categories',
@@ -13,7 +14,7 @@ import { attachAction } from '@ngxs-labs/attach-action';
 })
 @Injectable()
 export class CategoriesStore {
-  constructor(categoriesService: CategoriesService) {
-    attachAction(CategoriesStore, FetchCategoriesAction, fetchCategoriesReducerCreator(categoriesService));
+  constructor(categoriesService: CategoriesService, router: Router) {
+    attachAction(CategoriesStore, FetchCategoriesAction, fetchCategoriesReducerCreator(categoriesService, router));
   }
 }
